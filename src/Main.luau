@@ -27,6 +27,7 @@ end
 
 local HeatMap = {}
 local HeatThreshold = 3 --// feel free to adjust this if you need to, but i think 3 is ideal
+--// ^ if you don't want the player to be kicked, set this to math.huge
 
 while true do
 	task.wait(0.5)
