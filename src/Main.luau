@@ -34,6 +34,9 @@ while true do
 		local Animator = Character and Character:FindFirstChildOfClass("Humanoid").Animator
 
 		if Animator then
+			-// credit to coasterteam for telling me about the .AnimationPlayed flaw
+			--// because it gets fired so often, it wastes so much CPU performance
+			--// so we just iterate over already playing tracks instead
 			for _, Track in Animator:GetPlayingAnimationTracks() do
 				local IsForbidden, Id = IsAnimationIdMalicious(Track.Animation.AnimationId)
 
