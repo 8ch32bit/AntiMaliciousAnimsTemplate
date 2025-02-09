@@ -27,16 +27,16 @@ end
 
 local HeatMap = {}
 local HeatThreshold = 3 --// feel free to adjust this if you need to, but i think 3 is ideal
---// ^ if you don't want the player to be kicked, set this to math.huge
 
 while true do
 	task.wait(0.5)
-	
+
 	for _, Player in Players:GetPlayers() do
 		local Character = Player.Character
-		local Animator = Character and Character:FindFirstChildOfClass("Humanoid").Animator
+		local Humanoid = Character and Character:FindFirstChildOfClass("Humanoid")
+		local Animator = Humanoid and Humanoid.Animator
 
-		if Animator then
+		if Humanoid and Animator and Humanoid.Health > 0 then
 			--// credit to coasterteam for telling me about the .AnimationPlayed flaw
 			--// because it gets fired so often, it wastes so much CPU performance
 			--// so we just iterate over already playing tracks instead over an interval
@@ -44,7 +44,11 @@ while true do
 				local IsForbidden, Id = IsAnimationIdMalicious(Track.Animation.AnimationId)
 
 				if IsForbidden then
-					HeatMap[Player.UserId] += 1
+					if not HeatMap[Player.UserId] then
+						HeatMap[Player.UserId] = 1
+					else
+						HeatMap[Player.UserId] += 1
+					end
 
 					if HeatMap[Player.UserId] <= HeatThreshold then
 						warn(`AntiMaliciousAnims: Player '{Player.Name}' played a malicious animation ({Id})! Player has been killed.`)
