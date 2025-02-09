@@ -36,7 +36,7 @@ while true do
 		if Animator then
 			--// credit to coasterteam for telling me about the .AnimationPlayed flaw
 			--// because it gets fired so often, it wastes so much CPU performance
-			--// so we just iterate over already playing tracks instead
+			--// so we just iterate over already playing tracks instead over an interval
 			for _, Track in Animator:GetPlayingAnimationTracks() do
 				local IsForbidden, Id = IsAnimationIdMalicious(Track.Animation.AnimationId)
 
