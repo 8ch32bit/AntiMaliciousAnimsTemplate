@@ -2,7 +2,7 @@
 --// Date written: 8/02/2025
 
 --// i haven't included most of the original animation IDs (gatekeeping because i dont want skids patching them, and also for other security reasons)
---// if you happen locate any malicious IDs used (usually random roblox tool animations that are played back in "a very particular way") you can add in the BannedIds table
+--// if you happen to locate any malicious IDs used (usually random roblox tool animations that are played back in "a very particular way") you can add them in the BannedIds table
 
 --// you can also implement your own remote flagging stuff here if you wish
 
