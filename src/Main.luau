@@ -6,6 +6,8 @@
 
 --// you can also implement your own remote flagging stuff here if you wish
 
+--// TO setup this script, just make a new server-script (id recommend storing in ServerScriptService or anywhere else non-replicated), and paste this code in
+
 local Players = game:GetService("Players")
 
 local BannedIds = {
